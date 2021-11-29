@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
-function App() {
+type AppType=
+{
+  initial:number
+}
+
+function App(props:AppType) {
+  const [value,setValue] =useState(props.initial)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div>
+          {value}
+        </div>
+        <button onClick={_=>setValue(value+1)}>Increment</button>
+        <button onClick={_=>setValue(value-1)}>Decrement</button>
     </div>
   );
 }
